@@ -6,7 +6,7 @@ A Generative AI-based tool to categorize student feedback into themes like *Acad
 #Live Demo & Notebook
 
 - [Live Web App](https://gleaming-madeleine-167cee.netlify.app/)
-- [Colab Notebook]([https://colab.research.google.com/drive/1n6WRjHGSMA0bOSA0linJYilsfi259aLQ?usp=sharing](https://colab.research.google.com/drive/1n6WRjHGSMA0bOSA0linJYilsfi259aLQ?usp=sharing))
+- [Colab Notebook](https://colab.research.google.com/drive/1n6WRjHGSMA0bOSA0linJYilsfi259aLQ?usp=sharing)
 
 
 #Features
