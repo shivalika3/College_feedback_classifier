@@ -3,9 +3,8 @@
 A Generative AI-based tool to categorize student feedback into themes like *Academics, **Facilities, and **Administration* using few-shot prompting with OpenAI GPT-3.5.
 
 
-#Live Demo & Notebook
+#Notebook
 
-- [Live Web App](https://gleaming-madeleine-167cee.netlify.app/)
 - [Colab Notebook](https://colab.research.google.com/drive/1n6WRjHGSMA0bOSA0linJYilsfi259aLQ?usp=sharing)
 
 
