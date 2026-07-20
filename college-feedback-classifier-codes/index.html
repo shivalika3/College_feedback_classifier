@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>College Feedback Classifier</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="app-header">
+    <h1><i class="fas fa-comments"></i> College Feedback Classifier</h1>
+    <p>AI-powered classification of student, faculty &amp; staff feedback</p>
+  </header>
+
+  <nav class="nav-tabs">
+    <button class="nav-tab active" onclick="switchTab('submit')">Submit Feedback</button>
+    <button class="nav-tab" onclick="switchTab('analytics')">Analytics</button>
+    <button class="nav-tab" onclick="switchTab('history')">History</button>
+  </nav>
+
+  <!-- SUBMIT TAB -->
+  <section id="submit-tab" class="tab-content active">
+    <div class="grid">
+      <form id="feedbackForm" class="card">
+        <h2>Submit Feedback</h2>
+
+        <label>Name (optional)</label>
+        <input type="text" name="studentName" placeholder="Anonymous" />
+
+        <label>Department</label>
+        <select name="department" required>
+          <option value="">Select department</option>
+          <option>Computer Science</option>
+          <option>Mechanical</option>
+          <option>Electrical</option>
+          <option>Civil</option>
+          <option>Administration</option>
+          <option>Other</option>
+        </select>
+
+        <label>Year / Role</label>
+        <select name="year" required>
+          <option value="">Select year / role</option>
+          <option>1st Year</option>
+          <option>2nd Year</option>
+          <option>3rd Year</option>
+          <option>4th Year</option>
+          <option>Faculty</option>
+          <option>Staff</option>
+        </select>
+
+        <label>Priority</label>
+        <select name="urgency" required>
+          <option value="Low">Low</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="High">High</option>
+        </select>
+
+        <label>Feedback</label>
+        <textarea name="feedbackText" rows="5" placeholder="Type feedback here..." required></textarea>
+
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-paper-plane"></i> Classify Feedback
+        </button>
+
+        <div id="loading" class="loading"><i class="fas fa-spinner fa-spin"></i> Classifying...</div>
+      </form>
+
+      <div class="card">
+        <h2>Result</h2>
+        <div id="results">
+          <p class="muted">Submit feedback to see classification results here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYTICS TAB -->
+  <section id="analytics-tab" class="tab-content">
+    <div class="stats-grid">
+      <div class="stat-card"><span id="totalFeedback">0</span><label>Total Feedback</label></div>
+      <div class="stat-card"><span id="todayFeedback">0</span><label>Today</label></div>
+      <div class="stat-card"><span id="highPriority">0</span><label>High Priority</label></div>
+      <div class="stat-card"><span id="avgResponseTime">24</span><label>Avg Response (hrs)</label></div>
+    </div>
+
+    <div class="card">
+      <h2>Category Distribution</h2>
+      <div class="chart-row">
+        <span>Academics</span>
+        <div class="chart-bar"><div class="chart-fill academics"></div></div>
+        <span>0</span>
+      </div>
+      <div class="chart-row">
+        <span>Facilities</span>
+        <div class="chart-bar"><div class="chart-fill facilities"></div></div>
+        <span>0</span>
+      </div>
+      <div class="chart-row">
+        <span>Administration</span>
+        <div class="chart-bar"><div class="chart-fill administration"></div></div>
+        <span>0</span>
+      </div>
+      <div class="chart-row">
+        <span>General</span>
+        <div class="chart-bar"><div class="chart-fill general"></div></div>
+        <span>0</span>
+      </div>
+    </div>
+
+    <button class="btn-secondary" onclick="exportData()"><i class="fas fa-download"></i> Export Data</button>
+    <button class="btn-danger" onclick="clearAllData()"><i class="fas fa-trash"></i> Clear All</button>
+  </section>
+
+  <!-- HISTORY TAB -->
+  <section id="history-tab" class="tab-content">
+    <div class="card">
+      <h2>Feedback History</h2>
+      <div class="filters">
+        <input type="text" id="searchHistory" placeholder="Search..." />
+        <select id="filterCategory">
+          <option value="">All Categories</option>
+          <option>Academics</option>
+          <option>Facilities</option>
+          <option>Administration</option>
+          <option>General</option>
+        </select>
+        <select id="filterDepartment">
+          <option value="">All Departments</option>
+          <option>Computer Science</option>
+          <option>Mechanical</option>
+          <option>Electrical</option>
+          <option>Civil</option>
+          <option>Administration</option>
+          <option>Other</option>
+        </select>
+        <select id="filterPriority">
+          <option value="">All Priorities</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+      <div id="historyList"></div>
+    </div>
+  </section>
+
+</div>
+<script src="frontend.js"></script>
+</body>
+</html>
